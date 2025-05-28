@@ -59,6 +59,11 @@
                                         <i class="fas fa-file-invoice-dollar"></i> Sales
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.quicksales.create') }}">
+                                        <i class="fas fa-bolt"></i> Quick Sale
+                                    </a>
+                                </li>
                             @else
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('client.dashboard') }}">

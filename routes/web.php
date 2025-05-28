@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SpecificationController;
+use App\Http\Controllers\Admin\SizeController;
+use App\Http\Controllers\Admin\QuickSaleController; // Changed from Client to Admin
 use App\Http\Controllers\Client\SaleController as ClientSaleController;
 use App\Http\Controllers\HomeController;
 
@@ -52,6 +57,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Invoice generation (must come before sales resource)
     Route::get('sales/{sale}/invoice', [SaleController::class, 'generateInvoice'])->name('sales.invoice');
+
+    // Quick Sales routes - now with correct naming convention and controller reference
+    Route::get('quicksales/create', [QuickSaleController::class, 'create'])->name('quicksales.create');
+    Route::post('quicksales', [QuickSaleController::class, 'store'])->name('quicksales.store');
 
     // Resource routes
     Route::resource('products', ProductController::class);
